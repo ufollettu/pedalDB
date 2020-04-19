@@ -16,36 +16,36 @@
   ],
   "tags": [
     {
-      "name": "book",
-      "description": "Books APIs"
+      "name": "pedal",
+      "description": "Pedals APIs"
     }
   ],
   "paths": {
-    "/book/add": {
+    "/pedal/add": {
       "post": {
         "tags": [
-          "book"
+          "pedal"
         ],
-        "summary": "Add a book to the database",
-        "operationId": "book-add",
+        "summary": "Add a pedal to the database",
+        "operationId": "pedal-add",
         "requestBody": {
           "description": "New user signing up",
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DraftBookSchema"
+                "$ref": "#/components/schemas/DraftPedalSchema"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Book was added",
+            "description": "Pedal was added",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DraftBookSchema"
+                  "$ref": "#/components/schemas/DraftPedalSchema"
                 }
               }
             }
@@ -56,13 +56,13 @@
         }
       }
     },
-    "/book/all": {
+    "/pedal/all": {
       "get": {
         "tags": [
-          "book"
+          "pedal"
         ],
-        "summary": "Get all books in database",
-        "operationId": "book-get-all",
+        "summary": "Get all pedals in database",
+        "operationId": "pedal-get-all",
         "responses": {
           "200": {
             "description": "Search results",
@@ -70,10 +70,10 @@
               "application/json": {
                 "schema": {
                   "properties": {
-                    "books": {
+                    "pedals": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/BookSchema"
+                        "$ref": "#/components/schemas/PedalSchema"
                       }
                     }
                   }
@@ -87,13 +87,13 @@
         }
       }
     },
-    "/book/search": {
+    "/pedal/search": {
       "get": {
         "tags": [
-          "book"
+          "pedal"
         ],
-        "summary": "Search books by name or author",
-        "operationId": "book-search",
+        "summary": "Search pedals by name or author",
+        "operationId": "pedal-search",
         "parameters": [
           {
             "in": "query",
@@ -102,7 +102,7 @@
               "type": "string",
               "default": "hitchhiker"
             },
-            "description": "String containing full name or partial name of the book"
+            "description": "String containing full name or partial name of the pedal"
           },
           {
             "in": "query",
@@ -121,10 +121,10 @@
               "application/json": {
                 "schema": {
                   "properties": {
-                    "books": {
+                    "pedals": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/BookSchema"
+                        "$ref": "#/components/schemas/PedalSchema"
                       }
                     }
                   }
@@ -141,7 +141,7 @@
   },
   "components": {
     "schemas": {
-      "DraftBookSchema": {
+      "DraftPedalSchema": {
         "type": "object",
         "properties": {
           "name": {
@@ -154,10 +154,10 @@
           }
         }
       },
-      "BookSchema": {
+      "PedalSchema": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/DraftBookSchema"
+            "$ref": "#/components/schemas/DraftPedalSchema"
           }
         ],
         "type": "object",

@@ -1,8 +1,10 @@
 import { Router } from 'express';
+
 import swaggerUi from 'swagger-ui-express';
+
 import apiSpec from '../openapi.json';
 
-import * as BookController from './controllers/book';
+import * as PedalController from './controllers/pedal';
 
 const swaggerUiOptions = {
   customCss: '.swagger-ui .topbar { display: none }'
@@ -10,10 +12,10 @@ const swaggerUiOptions = {
 
 const router = Router();
 
-// Book routes
-router.post('/book/add', BookController.add);
-router.get('/book/all', BookController.all);
-router.get('/book/search', BookController.search);
+// Pedal routes
+router.post('/pedal/add', PedalController.add);
+router.get('/pedal/all', PedalController.all);
+router.get('/pedal/search', PedalController.search);
 
 // Dev routes
 if (process.env.NODE_ENV === 'development') {
