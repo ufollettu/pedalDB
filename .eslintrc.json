@@ -28,6 +28,7 @@
         "null": "ignore"
       }
     ],
+    "no-console":"off",
     "no-underscore-dangle": [
       "error",
       {
@@ -58,7 +59,7 @@
     "dot-notation": "off",
     "class-methods-use-this": "off",
     "comma-dangle": [
-      "error",
+      "off",
       {
         "arrays": "never",
         "objects": "never",
@@ -69,7 +70,7 @@
     ],
     "handle-callback-err": "error",
     "quotes": [
-      "error",
+      "off",
       "single"
     ]
   },

@@ -1,10 +1,9 @@
-import { RequestHandler } from 'express';
+import { RequestHandler } from "express";
 
-import handleErrorMiddleware from '../../middleware/handle-error-middleware';
-import Control, { IControl } from '../../models/Control';
-import Pedal, { IPedal } from '../../models/Pedal';
-import Resource, { IResource } from '../../models/Resource';
-
+import handleErrorMiddleware from "../../middleware/handle-error-middleware";
+import Control, { IControl } from "../../models/Control";
+import Pedal, { IPedal } from "../../models/Pedal";
+import Resource, { IResource } from "../../models/Resource";
 
 const add: RequestHandler = async (req, res) => {
   const {
@@ -18,8 +17,16 @@ const add: RequestHandler = async (req, res) => {
     referenceSound,
     note,
     clonesDIY,
-    discontinued
+    discontinued,
   } = req.body;
+
+  const resource = new Resource(brand);
+
+  await resource.save();
+
+  // INFO: Bulk insert
+  await Control.insertMany(controls);
+  await Resource.insertMany(images);
 
   const pedal = new Pedal({
     brand,
@@ -32,13 +39,14 @@ const add: RequestHandler = async (req, res) => {
     referenceSound,
     note,
     clonesDIY,
-    discontinued
+    discontinued,
   });
+
   await pedal.save();
 
   res.send({
-    message: 'Saved',
-    pedal: pedal.toJSON()
+    message: "Saved",
+    pedal: pedal.toJSON(),
   });
 };
 
